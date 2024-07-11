@@ -3,18 +3,15 @@ import importlib
 import numpy as np
 import plotly.graph_objects as go
 import streamlit as st
-from charts import (
-    plot_laffer_curve,
-    plot_laffer_curve_income
-)
+from charts import plot_laffer_curve, plot_laffer_curve_income
 from data_loader import (
     filter_non_empty_dataframes,
+    filter_non_empty_newdataframes,
+    load_income_tax_data,
     load_revenue,
     load_tax,
     merge_series,
-    load_income_tax_data,
     newmerge_series,
-    filter_non_empty_newdataframes
 )
 from streamlit_option_menu import option_menu
 
@@ -33,7 +30,7 @@ def main():
         with open(file_name) as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-    local_css(package_dir /"styles.css")
+    local_css(package_dir / "styles.css")
 
     st.markdown(
         """
@@ -57,7 +54,13 @@ def main():
     with st.sidebar:
         selected = option_menu(
             menu_title="Menu",
-            options=["Explanations", "Laffer Curve (household tax)", "Laffer Curve (business tax)","Sources", "DBnomics"],
+            options=[
+                "Explanations",
+                "Laffer Curve (household tax)",
+                "Laffer Curve (business tax)",
+                "Sources",
+                "DBnomics",
+            ],
             icons=["book", "bar-chart", "bar-chart", "paperclip", "search"],
             menu_icon=":",
             default_index=0,
@@ -77,7 +80,7 @@ def main():
             "However, Laffer never defined this threshold, i.e., the tax rate that maximizes state revenues.\n"
         )
 
-        # Laffer curve example 
+        # Laffer curve example
         tax_rates = np.linspace(0, 1, 500)
         revenues = tax_rates * (1 - tax_rates) ** 2 * 150
 
@@ -126,11 +129,11 @@ def main():
             "\n"
             "Many economists reject Laffer's theory, finding it too simplistic. Empirical studies show the model's excessive simplicity.\n"
         )
-    
+
     if selected == "Laffer Curve (household tax)":
-        #Plot for Laffer Curve for Household 
+        # Plot for Laffer Curve for Household
         st.subheader(":blue[**Charts**]")
-        df_rev= load_revenue()
+        df_rev = load_revenue()
         df_tax_in = load_income_tax_data()
         merged_newdfs = newmerge_series((df_tax_in, df_rev))
         filtered_newdfs = filter_non_empty_newdataframes(merged_newdfs)
@@ -140,7 +143,7 @@ def main():
         if country:
             fig = plot_laffer_curve_income(filtered_newdfs[country], country)
             st.plotly_chart(fig)
-    
+
         st.write(
             "**Tax on personal income:**\n"
             "Taxes levied on the net income and capital gain of individuals and measured as % of GDP ([OECD](https://www.oecd.org/en/data/indicators/tax-on-personal-income.html))\n"

@@ -118,7 +118,9 @@ def newmerge_series(newdfs):
 
         merged_newdf = country_newdfs[0]
         for newdf in country_newdfs[1:]:
-            merged_newdf = pd.merge(merged_newdf, newdf, on="original_period", how="left")
+            merged_newdf = pd.merge(
+                merged_newdf, newdf, on="original_period", how="left"
+            )
 
         # Check if the merged DataFrame is empty
         if not merged_newdf.empty:

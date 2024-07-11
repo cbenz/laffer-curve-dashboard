@@ -62,6 +62,7 @@ def plot_laffer_curve(df, country):
 
     return fig
 
+
 def plot_laffer_curve_income(newdf, country):
     newdf["original_period"] = pd.to_datetime(newdf["original_period"], errors="coerce")
     newdf = newdf.dropna(subset=["original_period"])
