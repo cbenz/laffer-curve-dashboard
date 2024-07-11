@@ -1,0 +1,22 @@
+The Laffer Curve is a hypothesis formulated by economist Arthur Laffer in 1974.
+
+Arthur Laffer (1940- ) is a liberal American economist. He is a proponent of "supply-side economics," a school of thought that argues stimulating growth requires supporting supply, and therefore businesses. He notably inspired Reagan's economic policies, which led to a significant reduction in taxes.
+
+Thus, Arthur Laffer defends the adage "too much tax kills tax." According to Laffer's theory, an increase in taxes contributes to the growth of state revenues up to a certain threshold. Once this threshold is passed, increasing taxes leads to a decrease in fiscal revenues. However, Laffer never defined this threshold, i.e., the tax rate that maximizes state revenues.
+
+Through this theory, Laffer justifies tax reduction policies, advocating for a relatively low tax rate.
+
+#### Why "too much tax kills tax"?
+A too high level of taxation would lead to an economic slowdown by discouraging households from working.
+
+According to Laffer, there would be two effects of reducing income taxes:
+1. **Immediate effect**: The reduction in taxes leads to an equivalent decrease in state revenues.
+2. **Long-term effect**: The money not spent on paying taxes will be spent elsewhere. Demand would increase, which would be beneficial for economic growth.
+
+Thus, two opposing effects would occur:
+- **Income effect**: Increasing taxes would push workers to work more.
+- **Substitution effect**: Households would not seek to work more (due to the reduced income from additional work) and might decide to turn to leisure instead.
+  
+How to know which effect dominates?
+
+Many economists reject Laffer's theory, finding it too simplistic. Empirical studies show the model's excessive simplicity.
