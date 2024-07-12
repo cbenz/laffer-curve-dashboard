@@ -59,9 +59,8 @@ def main():
                 "Laffer Curve (household tax)",
                 "Laffer Curve (business tax)",
                 "Sources",
-                "DBnomics",
             ],
-            icons=["book", "bar-chart", "bar-chart", "paperclip", "search"],
+            icons=["book", "bar-chart", "bar-chart", "search"],
             menu_icon=":",
             default_index=0,
         )
@@ -168,13 +167,15 @@ def main():
             "This tax rate only measures the amount of taxes and mandatory contributitons payable by business and not household ([World Bank](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IC.TAX.TOTL.CP.ZS))\n"
         )
     if selected == "Sources":
+        st.subheader("**Data**")
         st.write(
-            "Total tax and contribution rate : [link](https://db.nomics.world/WB/WDI?q=Total+tax+and+contribution+rate&tab=list)\n"
+            "[Total tax and contribution rate](https://db.nomics.world/WB/WDI?q=Total+tax+and+contribution+rate&tab=list)\n"
             "\n"
-            "Tax Revenue : [link](https://db.nomics.world/OECD/REV?tab=list)\n"
+            "[Tax Revenue](https://db.nomics.world/OECD/REV?tab=list)\n"
         )
-    if selected == "DBnomics":
-        st.write("Visit DBnomics by clicking [here](https://db.nomics.world)")
+        st.markdown("---")
+        st.write("[Source Code](https://github.com/dbnomics/laffer-curve-dashboard)")
+        st.write("[DBnomics](https://db.nomics.world)")
 
 
 if __name__ == "__main__":
