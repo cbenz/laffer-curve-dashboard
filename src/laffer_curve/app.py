@@ -103,6 +103,8 @@ def main():
 
         fig.update_layout(
             title="Laffer Curve in theory",
+            xaxis=dict(showticklabels=False),
+            yaxis=dict(showticklabels=False),
             xaxis_title="Tax rate",
             yaxis_title="Taxe revenue",
             legend=dict(x=0.8, y=1.15),
@@ -113,7 +115,7 @@ def main():
 
         st.write(
             "\n"
-            '**Why "too much tax kills taxs"?**\n'
+            '**Why "too much tax kills tax"?**\n'
             "A too high level of taxation would lead to an economic slowdown by discouraging households from working.\n"
             "\n"
             "According to Laffer, there would be two effects of reducing income taxes:\n"
@@ -121,7 +123,7 @@ def main():
             "2. **Long-term effect**: The money not spent on paying taxes will be spent elsewhere. Demand would increase, which would be beneficial for economic growth.\n"
             "\n"
             "Thus, two opposing effects would occur :\n"
-            "1. **Income effect**: Increasing taxes would push workers to work more.\n"
+            "1. **Income effect**: Increasing taxes would push workers to work more to maintain their income level.\n"
             "2. **Substitution effect**: Households would not seek to work more (due to the reduced income from additional work) and might decide to turn to leisure instead.\n"
             "\n"
             "*How to know which effect dominates?*\n"
