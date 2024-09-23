@@ -9,6 +9,7 @@ from sklearn.preprocessing import PolynomialFeatures
 def plot_laffer_curve(df, country):
     df["original_period"] = pd.to_datetime(df["original_period"], errors="coerce")
     df = df.dropna(subset=["original_period"])
+    df = df[df["original_period"].dt.year >= 1970]
     df["date"] = df["original_period"].dt.strftime("%Y")
     df["customdata"] = df.apply(
         lambda row: [row["date"], row["Taxe_rate"], row["Revenue"]], axis=1
@@ -66,6 +67,7 @@ def plot_laffer_curve(df, country):
 def plot_laffer_curve_income(newdf, country):
     newdf["original_period"] = pd.to_datetime(newdf["original_period"], errors="coerce")
     newdf = newdf.dropna(subset=["original_period"])
+    newdf = newdf[newdf["original_period"].dt.year >= 1970]
     newdf["date"] = newdf["original_period"].dt.strftime("%Y")
     newdf["customdata"] = newdf.apply(
         lambda row: [row["date"], row["Taxe_rate"], row["Revenue"]], axis=1
