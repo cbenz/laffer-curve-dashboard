@@ -116,6 +116,7 @@ def main():
         st.write(
             "\n"
             '**Why "too much tax kills tax"?**\n'
+            "\n"
             "A too high level of taxation would lead to an economic slowdown by discouraging households from working.\n"
             "\n"
             "According to Laffer, there would be two effects of reducing income taxes:\n"
@@ -136,38 +137,60 @@ def main():
         st.subheader(":blue[**Charts**]")
         df_rev = load_revenue()
         df_tax_in = load_income_tax_data()
-        merged_newdfs = newmerge_series((df_tax_in, df_rev))
-        filtered_newdfs = filter_non_empty_newdataframes(merged_newdfs)
+        tab1, tab2 = st.tabs([":bar_chart:", ":file_folder:"])
+        with tab1:
+            merged_newdfs = newmerge_series((df_tax_in, df_rev))
+            filtered_newdfs = filter_non_empty_newdataframes(merged_newdfs)
 
-        country = st.selectbox("Select a country", list(filtered_newdfs.keys()))
+            country = st.selectbox("Select a country", list(filtered_newdfs.keys()))
 
-        if country:
-            fig = plot_laffer_curve_income(filtered_newdfs[country], country)
-            st.plotly_chart(fig)
+            if country:
+                fig = plot_laffer_curve_income(filtered_newdfs[country], country)
+                st.plotly_chart(fig)
 
-        st.write(
-            "**Tax on personal income:**\n"
-            "Taxes levied on the net income and capital gain of individuals and measured as % of GDP ([OECD](https://www.oecd.org/en/data/indicators/tax-on-personal-income.html))\n"
-        )
+            st.write(
+                "**Tax on personal income:**\n"
+                "Taxes levied on the net income and capital gain of individuals and measured as % of GDP ([OECD](https://www.oecd.org/en/data/indicators/tax-on-personal-income.html))\n"
+            )
+        with tab2: 
+            st.subheader("Data")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.write("Revenue Dataset")
+                st.write(df_rev)
+            with col2: 
+                st.write("Tax Dataset")
+                st.write(df_tax_in)
 
     if selected == "Laffer Curve (business tax)":
         # Plot for Laffer Curve for business
         st.subheader(":blue[**Charts**]")
         df_rev = load_revenue()
         df_tax = load_tax()
-        merged_dfs = merge_series((df_tax, df_rev))
-        filtered_dfs = filter_non_empty_dataframes(merged_dfs)
+        tab1, tab2 = st.tabs([":bar_chart:", ":file_folder:"])
+        with tab1:
+            merged_dfs = merge_series((df_tax, df_rev))
+            filtered_dfs = filter_non_empty_dataframes(merged_dfs)
 
-        country = st.selectbox("Select a country", list(filtered_dfs.keys()))
+            country = st.selectbox("Select a country", list(filtered_dfs.keys()))
 
-        if country:
-            fig = plot_laffer_curve(filtered_dfs[country], country)
-            st.plotly_chart(fig)
+            if country:
+                fig = plot_laffer_curve(filtered_dfs[country], country)
+                st.plotly_chart(fig)
 
-        st.write(
-            "**Tax rate and contribution rate (% of profit) :** \n"
-            "This tax rate only measures the amount of taxes and mandatory contributitons payable by business and not household ([World Bank](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IC.TAX.TOTL.CP.ZS))\n"
-        )
+            st.write(
+                "**Tax rate and contribution rate (% of profit) :** \n"
+                "This tax rate only measures the amount of taxes and mandatory contributitons payable by business and not household ([World Bank](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IC.TAX.TOTL.CP.ZS))\n"
+            )
+        with tab2:
+            col1, col2 = st.columns(2)
+            with col1: 
+                st.write("Revenue Dataset")
+                st.write(df_rev)
+            with col2:
+                st.write("Tax Dataset")
+                st.write(df_tax)
+
     if selected == "Sources":
         st.subheader("**Data**")
         st.write(
